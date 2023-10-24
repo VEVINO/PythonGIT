@@ -1,0 +1,34 @@
+from datetime import date
+
+
+class Factura:
+
+    seria = "A12345"
+
+    def __init__(self, numar, nume_produs, cantitate, pret_buc):
+        self.numar = numar
+        self.nume_produs = nume_produs
+        self.cantitate = cantitate
+        self.pret_buc = pret_buc
+
+    def schimba_cantitatea(self, cantitate):
+        self.cantitate = cantitate
+
+    def schimba_pretul(self, pret):
+        self.pret_buc = pret
+
+    def schimba_nume_produs(self, nume):
+        self.nume_produs = nume
+
+    def genereaza_factura(self):
+        data = date.today().strftime("%d/%m/%Y")
+        total = self.cantitate * self.pret_buc
+        print(f"Factura seria {Factura.seria} număr {self.numar}\nData: {data}")
+        print("Produs | Cantitate | Preț bucată | Total")
+        print(f"{self.nume_produs} | {self.cantitate} | {self.pret_buc} | {total}")
+
+
+
+
+factura1 = Factura(1, "Teflon", 10, 100)
+factura1.genereaza_factura()
