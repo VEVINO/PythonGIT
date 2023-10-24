@@ -1,0 +1,36 @@
+class TodoList:
+    def __init__(self):
+        self.todo = {}
+
+    def adauga_task(self, nume, descriere):
+        self.todo[nume] = descriere
+
+    def finalizeaza_task(self, nume):
+        if nume in self.todo:
+            del self.todo[nume]
+        else:
+            print("Taskul nu exista in lista.")
+
+    def afiseaza_todo_list(self):
+        for nume in self.todo.keys():
+            print(nume)
+
+    def afiseaza_detalii_suplimentare(self, nume_task):
+        if nume_task in self.todo:
+            print(self.todo[nume_task])
+        else:
+            raspuns = input("Taskul nu exista in lista. Doriti sa-l adaugati? (da/nu) ")
+            if raspuns.lower() == "da":
+                detalii = input("Introduceti detalii pentru task: ")
+                self.adauga_task(nume_task, detalii)
+            else:
+                print("La revedere!")
+
+
+todo_list = TodoList()
+todo_list.adauga_task("Task 1", "Descriere task 1")
+todo_list.adauga_task("Task 2", "Descriere task 2")
+todo_list.afiseaza_todo_list()
+todo_list.afiseaza_detalii_suplimentare("Task 1")
+todo_list.finalizeaza_task("Task 2")
+todo_list.afiseaza_todo_list()
